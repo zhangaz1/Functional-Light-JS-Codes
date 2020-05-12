@@ -1,0 +1,46 @@
+function (x, y) {
+	/* istanbul ignore next */
+	cov_2dcv7flnpw().f[36]++;
+	cov_2dcv7flnpw().s[71]++;
+	return x + y;
+}
+
+
+function ajax(url, data, cb) {
+	/* istanbul ignore next */
+	cov_2dcv7flnpw().f[38]++;
+	cov_2dcv7flnpw().s[75]++;
+	log(`ajax(url: ${url}, data: ${JSON.stringify(data)})`);
+	/* istanbul ignore next */
+	cov_2dcv7flnpw().s[76]++;
+	cb(data);
+}
+
+() => false
+
+a => true
+
+	() => {
+	/* istanbul ignore next */
+	cov_1pvhle690g().f[2]++;
+	cov_1pvhle690g().s[23]++;
+	"retur;\n"
+}
+
+
+
+a => {
+	/* istanbul ignore next */
+	cov_1pvhle690g().f[3]++;
+	cov_1pvhle690g().s[25]++;
+	return a;
+}
+
+
+
+(a, b) => {
+	/* istanbul ignore next */
+	cov_1pvhle690g().f[4]++;
+	cov_1pvhle690g().s[27]++;
+	return a + b;
+}
