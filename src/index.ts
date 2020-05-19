@@ -1,10 +1,13 @@
 import { runTest as runCh3Test } from './ch3';
+import { runTest as runCh4Test } from './ch4';
+import { runTest as runCh8Test } from './ch8';
 
 ; (function start() {
 	console.log('hello world!');
 
 	runCh3Test();
-
+	runCh4Test();
+	runCh8Test();
 
 	test1();
 	test2();

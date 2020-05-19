@@ -21,7 +21,6 @@ import {
 	not,
 	when,
 } from './tools';
-import { stringify } from 'querystring';
 
 const arr = ['1', '2', '3'];
 const numArr = [1, 2, 3, 4, 5];
@@ -117,8 +116,7 @@ function test11() {
 	testCurryAjax(ajax, curry3);
 
 	function testCurryAjax(ajax: Function, curry: Function) {
-		const curriedAjax = curry(ajax);
-		const personFetcher = curriedAjax('http://some.api/person');
+		const personFetcher = ajax('http://some.api/person');
 		const getCurrentUser = personFetcher({ user: 'id_xxx' });
 		getCurrentUser((data: any) => trace('test11', data));
 	}

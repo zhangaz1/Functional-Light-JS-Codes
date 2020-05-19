@@ -21,7 +21,103 @@ export {
 	spreadArgProps,
 	not,
 	when,
+	compose2,
+	compose,
+	compose3,
+	compose4,
+	compose5,
+	compose6,
+	pipe,
+	prop,
+	setProp,
+	makeObjProp,
+	trampoline,
 };
+
+function trampoline(fn: Function) {
+	return function trampolined(...args: any[]) {
+		let result = fn(...args);
+		while (typeof result === 'function') {
+			result = result();
+		}
+		return result;
+	}
+}
+
+const makeObjProp = function makeObjProp(name: string, value: any) {
+	return setProp(name, {}, value);
+}
+
+const setProp = curry(function setProp(name: string, obj: any, value: any) {
+	const o = Object.assign({}, obj);
+	o[name] = value;
+	return o;
+})
+
+const prop = curry(function prop(name: string, obj: any) {
+	return obj[name];
+});
+
+const pipe = reverseArgs(compose);
+
+function compose6(...fns: Function[]): Function {
+	const [fn1, fn2, ...rest] = fns.reverse();
+
+	if (rest.length === 0) {
+		return composed;
+	} else {
+		return compose6(...rest.reverse(), composed);
+	}
+
+	function composed(...args: any[]) {
+		return fn2(fn1(...args));
+	}
+}
+
+function compose5(fns: Function[]) {
+	return fns.length <= 0
+		? identity
+		: function composed(...args: any[]) {
+			compose5(fns.slice(0, -1))(fns[fns.length - 1](...args));
+		};
+}
+
+function compose4(...fns: Function[]) {
+	return fns.slice()
+		.reverse()
+		.reduce((fn1: Function, fn2: Function) => {
+			return function composed(...args: any[]) {
+				return fn2(fn1(...args));
+			}
+		});
+}
+
+function compose3(...fns: Function[]) {
+	return function composed(result: any) {
+		return fns.slice()
+			.reverse()
+			.reduce((result, fn) => fn(result), result);
+	}
+}
+
+function compose(...fns: Function[]) {
+	return function composed(result: any) {
+		const fnsCopy = fns.slice();
+
+		while (fnsCopy.length > 0) {
+			const fn = (fnsCopy.pop()) as Function;
+			result = fn(result);
+		}
+
+		return result;
+	};
+}
+
+function compose2(fn2: Function, fn1: Function) {
+	return function composed(origValue: any) {
+		return fn2(fn1(origValue));
+	}
+}
 
 function when(predicate: Function, fn: Function) {
 	return function conditional(...args: any[]) {
@@ -188,7 +284,7 @@ function sum(...args: any[]) {
 	return args.reduce(add);
 }
 
-function ajax(url: string, data: object, cb: Function) {
+const ajax = curry(function ajax(url: string, data: object, cb: Function) {
 	log(`ajax(url: ${url}, data: ${JSON.stringify(data)})`);
 	cb(data);
-}
+});
