@@ -1,6 +1,8 @@
 import { runTest as runCh3Test } from './ch3';
 import { runTest as runCh4Test } from './ch4';
 import { runTest as runCh8Test } from './ch8';
+import { runTest as runCh9Test } from './ch9';
+import { runTest as runCh10Test } from './ch10';
 
 ; (function start() {
 	console.log('hello world!');
@@ -8,6 +10,8 @@ import { runTest as runCh8Test } from './ch8';
 	runCh3Test();
 	runCh4Test();
 	runCh8Test();
+	runCh9Test();
+	runCh10Test();
 
 	test1();
 	test2();

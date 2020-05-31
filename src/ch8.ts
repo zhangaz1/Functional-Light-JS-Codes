@@ -4,9 +4,7 @@ import {
 	createTrace,
 	identity,
 	trampoline,
-} from './tools';
-import { create } from 'domain';
-import { is } from 'ramda';
+} from './tools';;
 
 export {
 	runTest,
