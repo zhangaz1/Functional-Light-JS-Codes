@@ -4,6 +4,7 @@ import { runTest as runCh8Test } from './ch8';
 import { runTest as runCh9Test } from './ch9';
 import { runTest as runCh10Test } from './ch10';
 import { runTest as runAppendixA } from './appendix-A';
+import { runTest as runAppendixB } from './appendix-B';
 
 ; (function start() {
 	console.log('hello world!');
@@ -13,7 +14,8 @@ import { runTest as runAppendixA } from './appendix-A';
 	// runCh8Test();
 	// runCh9Test();
 	// runCh10Test();
-	runAppendixA();
+	// runAppendixA();
+	runAppendixB();
 
 	// test1();
 	// test2();
