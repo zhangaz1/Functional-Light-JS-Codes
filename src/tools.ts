@@ -1,4 +1,3 @@
-import { forEach } from "ramda";
 
 export {
 	ajax,
@@ -53,9 +52,28 @@ export {
 	flattenReducer,
 	guard,
 	tree,
+	IBinaryTree,
+	listify,
+	first,
+	last,
 };
 
-export interface IBinaryTree {
+function last(list: any[]) {
+	list = listify(list);
+	return list[list.length - 1];
+}
+
+function first(list: any[]) {
+	return listify(list)[0];
+}
+
+function listify(itemOrList: any | any[]) {
+	return Array.isArray(itemOrList)
+		? itemOrList
+		: [itemOrList];
+}
+
+interface IBinaryTree {
 	parent?: IBinaryTree,
 	left?: IBinaryTree,
 	right?: IBinaryTree,
@@ -605,6 +623,7 @@ function createTrace(...presetArgs: any[]) {
 
 function log(...args: any) {
 	console.log(...args);
+	return args[args.length - 1];
 }
 
 function add(x: number, y: number) {
