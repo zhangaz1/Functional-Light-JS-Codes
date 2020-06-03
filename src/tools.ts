@@ -56,7 +56,13 @@ export {
 	listify,
 	first,
 	last,
+	transduce,
 };
+
+function transduce(transducer: Function, combinFn: Function, initialValue: any, list: any[]) {
+	const reducer = transducer(combinFn);
+	return reduce(reducer, initialValue, list);
+}
 
 function last(list: any[]) {
 	list = listify(list);

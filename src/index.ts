@@ -3,18 +3,20 @@ import { runTest as runCh4Test } from './ch4';
 import { runTest as runCh8Test } from './ch8';
 import { runTest as runCh9Test } from './ch9';
 import { runTest as runCh10Test } from './ch10';
+import { runTest as runAppendixA } from './appendix-A';
 
 ; (function start() {
 	console.log('hello world!');
 
-	runCh3Test();
-	runCh4Test();
-	runCh8Test();
-	runCh9Test();
-	runCh10Test();
+	// runCh3Test();
+	// runCh4Test();
+	// runCh8Test();
+	// runCh9Test();
+	// runCh10Test();
+	runAppendixA();
 
-	test1();
-	test2();
+	// test1();
+	// test2();
 
 	/*-----------------------------------------------------------------------------
 	 *  tests:
